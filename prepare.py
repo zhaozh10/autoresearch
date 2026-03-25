@@ -50,6 +50,80 @@ SPLIT_PATTERN = r"""'(?i:[sdmt]|ll|ve|re)|[^\r\n\p{L}\p{N}]?+\p{L}+|\p{N}{1,2}| 
 SPECIAL_TOKENS = [f"<|reserved_{i}|>" for i in range(4)]
 BOS_TOKEN = "<|reserved_0|>"
 
+
+def get_free_gpu():
+    import subprocess
+
+    # 1. 查询所有被 Slurm 已分配的 GPU（包括排队中尚未运行的）
+    def get_slurm_allocated_gpus():
+        allocated = set()
+        try:
+            result = subprocess.run(
+                ["squeue", "--noheader", "--format=%R %b"],
+                capture_output=True, text=True
+            )
+            for line in result.stdout.strip().split("\n"):
+                if not line.strip():
+                    continue
+                parts = line.split()
+                if len(parts) < 2:
+                    continue
+                resource = parts[1]  # e.g. "gpu:0,gpu:3" or "gpu:2"
+                if "gpu:" in resource:
+                    for item in resource.split(","):
+                        if "gpu:" in item:
+                            try:
+                                gpu_idx = int(item.split("gpu:")[-1])
+                                allocated.add(gpu_idx)
+                            except ValueError:
+                                pass
+        except FileNotFoundError:
+            print("Warning: squeue not found, skipping Slurm check")
+        return allocated
+
+    # 2. 查询所有 GPU 的显存占用
+    def get_gpu_memory_usage():
+        result = subprocess.run(
+            ["nvidia-smi", "--query-gpu=index,memory.used",
+             "--format=csv,noheader,nounits"],
+            capture_output=True, text=True
+        )
+        gpus = []
+        for line in result.stdout.strip().split("\n"):
+            if not line.strip():
+                continue
+            idx, mem = line.split(", ")
+            gpus.append((int(idx), int(mem)))
+        return gpus  # [(gpu_idx, mem_used_mb), ...]
+
+    slurm_allocated = get_slurm_allocated_gpus()
+    print(f"Slurm-allocated GPUs: {slurm_allocated}")
+
+    all_gpus = get_gpu_memory_usage()
+    # 按显存占用升序排列，优先选最空闲的
+    all_gpus.sort(key=lambda x: x[1])
+
+    for gpu_idx, mem_used in all_gpus:
+        if gpu_idx in slurm_allocated:
+            print(f"GPU {gpu_idx} skipped (allocated by Slurm, {mem_used} MB used)")
+            continue
+        # 3. 实际尝试在该 GPU 上分配一小块显存验证可用性
+        try:
+            test = torch.zeros(1, device=f"cuda:{gpu_idx}")
+            del test
+            torch.cuda.empty_cache()
+            print(f"Auto-selected GPU {gpu_idx} ({mem_used} MB used)")
+            return gpu_idx
+        except RuntimeError as e:
+            print(f"GPU {gpu_idx} unavailable: {e}")
+            continue
+
+    print("No free GPU found. Exiting.")
+    exit(1)
+
+RUNNING_DEVICE_IDX = get_free_gpu() 
+ 
+
 # ---------------------------------------------------------------------------
 # Data download
 # ---------------------------------------------------------------------------
@@ -296,7 +370,7 @@ def make_dataloader(tokenizer, B, T, split, buffer_size=1000):
     # Pre-allocate buffers: [inputs (B*T) | targets (B*T)]
     row_buffer = torch.empty((B, row_capacity), dtype=torch.long)
     cpu_buffer = torch.empty(2 * B * T, dtype=torch.long, pin_memory=True)
-    gpu_buffer = torch.empty(2 * B * T, dtype=torch.long, device="cuda")
+    gpu_buffer = torch.empty(2 * B * T, dtype=torch.long, device=f"cuda:{RUNNING_DEVICE_IDX}")
     cpu_inputs = cpu_buffer[:B * T].view(B, T)
     cpu_targets = cpu_buffer[B * T:].view(B, T)
     inputs = gpu_buffer[:B * T].view(B, T)
@@ -349,7 +423,7 @@ def evaluate_bpb(model, tokenizer, batch_size):
     are excluded from both sums.
     Uses fixed MAX_SEQ_LEN so results are comparable across configs.
     """
-    token_bytes = get_token_bytes(device="cuda")
+    token_bytes = get_token_bytes(device=f"cuda:{RUNNING_DEVICE_IDX}")
     val_loader = make_dataloader(tokenizer, batch_size, MAX_SEQ_LEN, "val")
     steps = EVAL_TOKENS // (batch_size * MAX_SEQ_LEN)
     total_nats = 0.0
