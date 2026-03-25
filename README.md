@@ -44,7 +44,7 @@ If the above commands all work ok, your setup is working and you can go into aut
 Simply spin up your Claude/Codex or whatever you want in this repo (and disable all permissions), then you can prompt something like:
 
 ```
-Hi have a look at program.md and let's kick off a new experiment! let's do the setup first.
+Hi have a look at program.md and ssh.md and let's kick off a new experiment! let's do the setup first.
 ```
 
 The `program.md` file is essentially a super lightweight "skill".
@@ -55,6 +55,7 @@ The `program.md` file is essentially a super lightweight "skill".
 prepare.py      — constants, data prep + runtime utilities (do not modify)
 train.py        — model, optimizer, training loop (agent modifies this)
 program.md      — agent instructions
+ssh.md          — how to connect with GPU node
 pyproject.toml  — dependencies
 ```
 
