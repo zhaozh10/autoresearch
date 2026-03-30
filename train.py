@@ -1,8 +1,9 @@
 """
-ISIC 2019 skin lesion classification — baseline training script.
+ISIC 2019 skin lesion classification — training script.
 Usage: uv run train.py
 """
 import os
+import sys
 import time
 
 import numpy as np
@@ -15,21 +16,33 @@ import timm
 import prepare
 from data import get_dataloaders
 
+# Force unbuffered output
+sys.stdout.reconfigure(line_buffering=True)
+sys.stderr.reconfigure(line_buffering=True)
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
 
-BATCH_SIZE = 32
-LR = 1e-4
-WEIGHT_DECAY = 1e-4
+BATCH_SIZE = 48
+LR = 3e-4
+WEIGHT_DECAY = 1e-2
 NUM_WORKERS = 4
+LABEL_SMOOTHING = 0.1
+WARMUP_EPOCHS = 3
 
 # ---------------------------------------------------------------------------
 # Model
 # ---------------------------------------------------------------------------
 
 def build_model():
-    model = timm.create_model("efficientnet_b0", pretrained=True, num_classes=prepare.NUM_CLASSES)
+    model = timm.create_model(
+        "efficientnet_b2",
+        pretrained=True,
+        num_classes=prepare.NUM_CLASSES,
+        drop_rate=0.3,
+        drop_path_rate=0.2,
+    )
     return model
 
 # ---------------------------------------------------------------------------
@@ -106,17 +119,24 @@ def main():
 
     # Model
     model = build_model().to(device)
-    print(f"Model: efficientnet_b0 | Params: {sum(p.numel() for p in model.parameters()):,}")
+    print(f"Model: efficientnet_b2 | Params: {sum(p.numel() for p in model.parameters()):,}")
 
-    # Loss, optimizer, scheduler
-    criterion = nn.CrossEntropyLoss(weight=class_weights)
+    # Loss with label smoothing
+    criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=LABEL_SMOOTHING)
     optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
 
-    # Cosine annealing — estimate total steps from time budget
+    # Warmup + cosine schedule
     steps_per_epoch = len(train_loader)
-    est_epochs = max(1, int(prepare.TIME_BUDGET / 60))  # rough: ~1 min per epoch estimate
-    total_steps = steps_per_epoch * est_epochs
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=total_steps)
+    warmup_steps = WARMUP_EPOCHS * steps_per_epoch
+
+    def lr_lambda(step):
+        if step < warmup_steps:
+            return step / max(warmup_steps, 1)
+        # cosine decay after warmup
+        progress = (step - warmup_steps) / max(1, 50 * steps_per_epoch - warmup_steps)
+        return 0.5 * (1 + np.cos(np.pi * min(progress, 1.0)))
+
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
 
     # Checkpointing
     os.makedirs(prepare.CHECKPOINT_DIR, exist_ok=True)
@@ -128,6 +148,7 @@ def main():
     total_start = time.time()
     train_start = None
     epoch = 0
+    global_step = 0
 
     while True:
         epoch += 1
@@ -151,11 +172,13 @@ def main():
             logits = model(images)
             loss = criterion(logits, labels)
             loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
             scheduler.step()
 
             running_loss += loss.item()
             n_batches += 1
+            global_step += 1
 
         # Check time budget after epoch
         if train_start is not None:
@@ -165,7 +188,8 @@ def main():
                 break
 
         avg_loss = running_loss / max(n_batches, 1)
-        print(f"Epoch {epoch} | loss={avg_loss:.4f} | elapsed={elapsed:.0f}s")
+        cur_lr = optimizer.param_groups[0]["lr"]
+        print(f"Epoch {epoch} | loss={avg_loss:.4f} | lr={cur_lr:.2e} | elapsed={elapsed:.0f}s")
 
         # Save last checkpoint
         torch.save(model.state_dict(), last_path)
