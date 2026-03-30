@@ -6,6 +6,9 @@ dist/
 wheels/
 *.egg-info
 *.out
+*.pt
+*.pth
+*.ckpt
 *.log
 # Virtual environments
 .venv

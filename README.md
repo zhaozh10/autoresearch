@@ -10,11 +10,12 @@ The idea: give an AI agent a small but real LLM training setup and let it experi
 
 The repo is deliberately kept small and only really has three files that matter:
 
-- **`prepare.py`** — fixed constants, one-time data prep (downloads training data, trains a BPE tokenizer), and runtime utilities (dataloader, evaluation). Not modified.
-- **`train.py`** — the single file the agent edits. Contains the full GPT model, optimizer (Muon + AdamW), and training loop. Everything is fair game: architecture, hyperparameters, optimizer, batch size, etc. **This file is edited and iterated on by the agent**.
+- **`prepare.py`** — fixed constants, data paths, experiment config (not modified). Not modified.
+- **`data.py`** - data preprocessing, augmentation, splitting (written by agent)
+- **`train.py`** — model, optimizer, training loop, evaluation (written by agent). Everything is fair game: architecture, hyperparameters, optimizer, batch size, etc. **This file is edited and iterated on by the agent**.
 - **`program.md`** — baseline instructions for one agent. Point your agent here and let it go. **This file is edited and iterated on by the human**.
 
-By design, training runs for a **fixed 5-minute time budget** (wall clock, excluding startup/compilation), regardless of the details of your compute. The metric is **val_bpb** (validation bits per byte) — lower is better, and vocab-size-independent so architectural changes are fairly compared.
+By design, training runs for a **fixed 30-minute time budget** (wall clock, excluding startup/compilation), regardless of the details of your compute. In each run, trains a model, evaluates on validation set, logs metrics, and saves checkpoints.
 
 If you are new to neural networks, this ["Dummy's Guide"](https://x.com/hooeem/status/2030720614752039185) looks pretty good for a lot more context.
 
@@ -44,7 +45,7 @@ If the above commands all work ok, your setup is working and you can go into aut
 Simply spin up your Claude/Codex or whatever you want in this repo (and disable all permissions), then you can prompt something like:
 
 ```
-Hi have a look at program.md and ssh.md and let's kick off a new experiment! let's do the setup first.
+Hi have a look at program.md and let's kick off a new experiment! let's do the setup first.
 ```
 
 The `program.md` file is essentially a super lightweight "skill".
@@ -53,33 +54,82 @@ The `program.md` file is essentially a super lightweight "skill".
 
 ```
 prepare.py      — constants, data prep + runtime utilities (do not modify)
-train.py        — model, optimizer, training loop (agent modifies this)
+data.py         - data preprocessing, augmentation, splitting (written by agent and can be modified)
+train.py        — model, optimizer, training loop (written by agent and can be modified)
 program.md      — agent instructions
-ssh.md          — how to connect with GPU node
 pyproject.toml  — dependencies
 ```
 
 ## Design choices
 
-- **Single file to modify.** The agent only touches `train.py`. This keeps the scope manageable and diffs reviewable.
-- **Fixed time budget.** Training always runs for exactly 5 minutes, regardless of your specific platform. This means you can expect approx 12 experiments/hour and approx 100 experiments while you sleep. There are two upsides of this design decision. First, this makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc). Second, this means that autoresearch will find the most optimal model for your platform in that time budget. The downside is that your runs (and results) become not comparable to other people running on other compute platforms.
+- **File to modify.** During experiment loop, the agent only touches `train.py` and `data.py`. This keeps the scope manageable and diffs reviewable.
+- **Fixed time budget.** Training always runs for exactly 30 minutes, regardless of your specific platform. This means you can expect approx 2 experiments/hour and approx 18 experiments while you sleep. There are two upsides of this design decision. First, this makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc). Second, this means that autoresearch will find the most optimal model for your platform in that time budget. The downside is that your runs (and results) become not comparable to other people running on other compute platforms.
 - **Self-contained.** No external dependencies beyond PyTorch and a few small packages. No distributed training, no complex configs. One GPU, one file, one metric.
 
 ## Platform support
 
-This code currently requires that you have a single NVIDIA GPU. In principle it is quite possible to support CPU, MPS and other platforms but this would also bloat the code. I'm not 100% sure that I want to take this on personally right now. People can reference (or have their agents reference) the full/parent nanochat repository that has wider platform support and shows the various solutions (e.g. a Flash Attention 3 kernels fallback implementation, generic device support, autodetection, etc.), feel free to create forks or discussions for other platforms and I'm happy to link to them here in the README in some new notable forks section or etc.
+This code currently requires that you have at least a single NVIDIA GPU. In principle it is quite possible to support CPU, MPS and other platforms but this would also bloat the code. I'm not 100% sure that I want to take this on personally right now. People can reference (or have their agents reference) the full/parent nanochat repository that has wider platform support and shows the various solutions (e.g. a Flash Attention 3 kernels fallback implementation, generic device support, autodetection, etc.), feel free to create forks or discussions for other platforms and I'm happy to link to them here in the README in some new notable forks section or etc.
 
-Seeing as there seems to be a lot of interest in tinkering with autoresearch on much smaller compute platforms than an H100, a few extra words. If you're going to try running autoresearch on smaller computers (Macbooks etc.), I'd recommend one of the forks below. On top of this, here are some recommendations for how to tune the defaults for much smaller models for aspiring forks:
+Seeing as there seems to be a lot of interest in tinkering with autoresearch on much smaller compute platforms than an H100, a few extra words. If you're going to try running autoresearch on smaller computers (Macbooks etc.), I'd recommend one of the forks below. On top of this, here are some recommendations for how to tune the defaults for much smaller models:
 
-1. To get half-decent results I'd use a dataset with a lot less entropy, e.g. this [TinyStories dataset](https://huggingface.co/datasets/karpathy/tinystories-gpt4-clean). These are GPT-4 generated short stories. Because the data is a lot narrower in scope, you will see reasonable results with a lot smaller models (if you try to sample from them after training).
-2. You might experiment with decreasing `vocab_size`, e.g. from 8192 down to 4096, 2048, 1024, or even - simply byte-level tokenizer with 256 possibly bytes after utf-8 encoding.
-3. In `prepare.py`, you'll want to lower `MAX_SEQ_LEN` a lot, depending on the computer even down to 256 etc. As you lower `MAX_SEQ_LEN`, you may want to experiment with increasing `DEVICE_BATCH_SIZE` in `train.py` slightly to compensate. The number of tokens per fwd/bwd pass is the product of these two.
-4. Also in `prepare.py`, you'll want to decrease `EVAL_TOKENS` so that your validation loss is evaluated on a lot less data.
-5. In `train.py`, the primary single knob that controls model complexity is the `DEPTH` (default 8, here). A lot of variables are just functions of this, so e.g. lower it down to e.g. 4.
-6. You'll want to most likely use `WINDOW_PATTERN` of just "L", because "SSSL" uses alternating banded attention pattern that may be very inefficient for you. Try it.
-7. You'll want to lower `TOTAL_BATCH_SIZE` a lot, but keep it powers of 2, e.g. down to `2**14` (~16K) or so even, hard to tell.
+Seeing as there seems to be a lot of interest in adapting autoresearch to medical tasks and to smaller compute platforms, here are some practical tricks that are often much more useful than blindly scaling model size.
 
-I think these would be the reasonable hyperparameters to play with. Ask your favorite coding agent for help and copy paste them this guide, as well as the full source code.
+1. Do not downsample blindly.  In medical imaging, resolution is often part of the signal. For example, in digital mammography, aggressive downsampling can destroy microcalcifications or subtle lesion boundaries. Use modality-aware defaults:
+   - mammography: treat `1024x1024` as a minimum unless there is a strong reason otherwise
+   - chest X-ray: `512x512` may be acceptable for many tasks
+   - pathology / microscopy: often better handled with patching or tiling instead of shrinking the whole image too much
+
+2. Use medically appropriate augmentations. Strong natural-image augmentations can be harmful in medicine. Prefer restrained augmentations such as small rotations, flips only when anatomically valid, mild brightness / contrast jitter, light blur or noise only if it reflects acquisition variation. Avoid overly aggressive augmentation that changes pathology appearance or creates anatomically implausible samples.
+
+4. Handle class imbalance explicitly. Many medical datasets are highly imbalanced. Useful options include weighted loss, focal loss, class-balanced sampling, oversampling rare classes.  
+For screening-style tasks, improving minority-class recall is often more important than raw accuracy.
+
+5. In medical tasks, the best checkpoint is often not the one with the lowest validation loss. Depending on the medical task, prioritize metrics such as AUC, sensitivity / recall, specificity, F1, Youden-Index, Dice / IoU, etc. The training loss can stay standard, but model selection should follow the clinically relevant primary metric.
+
+6. Tune the decision threshold, not just the model weights. For many classification tasks, especially imbalanced ones, a large gain can come from selecting a better operating threshold on the validation set instead of using the default `0.5`. This is particularly important when the user wants higher sensitivity, fewer false negatives, or a specific sensitivity/specificity tradeoff.
+
+7. Use pretrained backbones whenever possible.  
+   Medical datasets are often small. Starting from pretrained models is usually a stronger baseline than training from scratch. The agent should consider:
+   - `timm` backbones
+   - Hugging Face vision backbones
+   - domain-specific checkpoints if available and compatible  
+   In many cases, a good pretrained encoder plus a simple head beats a fancy custom architecture.
+
+8. Freeze more, then unfreeze if needed.  
+   On small datasets, full fine-tuning can overfit or become unstable. A good default strategy is: (1) start with a frozen backbone and train the head, (2) then unfreeze later layers if validation saturates.
+   This is often more compute-efficient and more stable.
+
+9. Use patient-level splitting whenever possible.  
+   Medical datasets often contain multiple studies, views, slices, or tiles from the same patient. Splitting at the image level can leak information and produce overly optimistic results. If patient IDs exist, use patient-level splitting by default. Multi-view and multi-modal input are encouraged.
+
+10. Keep validation representative but cheap.  
+    Validation should remain stable across runs, but on small hardware it may be too expensive to run very frequently. A practical compromise is:
+    - validate on the same fixed validation set
+    - reduce validation frequency if needed
+    - keep the evaluation function unchanged within the experiment loop
+
+11. For segmentation and detection, start simple.  
+    Before trying a large architecture, first make sure (1) masks / boxes are loaded correctly (2) interpolation is correct (3) target alignment is correct (4) postprocessing is reasonable  
+    Many failures in medical segmentation/detection come from pipeline bugs rather than model weakness.
+
+12. Watch calibration and confidence, not just discrimination.
+    In clinical settings, a model with decent AUC but badly calibrated confidence can still be difficult to use. If relevant, consider logging:
+    - calibration error
+    - confidence histograms
+    - sensitivity/specificity at chosen thresholds
+
+14. Prefer stable, reproducible wins over fragile complexity.  
+    Medical datasets are often small and noisy. Tricks that give tiny gains but add a lot of engineering complexity are often not worth it. Simpler pipelines with robust validation are usually better foundations for autonomous iteration.
+
+In short, for medical tasks the biggest wins often come from:
+- preserving clinically relevant image detail
+- handling imbalance properly
+- choosing the right validation metric
+- tuning thresholds
+- preventing leakage
+- using pretrained backbones and task-appropriate data pipelines
+
+I think these would be the reasonable tuning tricks to play with. Ask your favorite coding agent for help and copy paste them this guide, as well as the full source code.
 
 ## Notable forks
 
