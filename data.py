@@ -1,7 +1,9 @@
 import os
 import csv
 import random
+import time
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
 import torch
@@ -45,17 +47,10 @@ def load_lesion_ids(csv_path):
 # ---------------------------------------------------------------------------
 
 def split_train_val(samples, lesion_map, val_frac=0.20, seed=42):
-    """Split samples into train/val at the lesion level (patient-level proxy).
-
-    Images sharing a lesion_id always go to the same split.
-    Images without a lesion_id are each treated as their own unique group.
-    Stratified by class to preserve balance.
-    """
+    """Split samples into train/val at the lesion level (patient-level proxy)."""
     rng = random.Random(seed)
 
-    # Group samples by lesion_id (or unique placeholder)
-    # Each group: (lesion_key, class_idx, [list of samples])
-    groups_by_class = defaultdict(list)  # class_idx -> list of (key, [samples])
+    groups_by_class = defaultdict(list)
     _counter = 0
     lesion_to_key = {}
     for image_id, cls_idx in samples:
@@ -69,7 +64,6 @@ def split_train_val(samples, lesion_map, val_frac=0.20, seed=42):
             lesion_to_key[key] = (key, cls_idx, [])
         lesion_to_key[key][2].append((image_id, cls_idx))
 
-    # Organise groups by their majority class
     for key, cls_idx, samps in lesion_to_key.values():
         groups_by_class[cls_idx].append((key, samps))
 
@@ -78,7 +72,6 @@ def split_train_val(samples, lesion_map, val_frac=0.20, seed=42):
     for cls_idx in range(prepare.NUM_CLASSES):
         groups = groups_by_class[cls_idx]
         rng.shuffle(groups)
-        # Count total images in this class
         total_images = sum(len(s) for _, s in groups)
         target_val = int(total_images * val_frac)
         val_count = 0
@@ -92,40 +85,57 @@ def split_train_val(samples, lesion_map, val_frac=0.20, seed=42):
     return train_samples, val_samples
 
 # ---------------------------------------------------------------------------
+# In-memory image cache  (load once from network FS, then train from RAM)
+# ---------------------------------------------------------------------------
+
+def _load_one(args):
+    image_id, img_dir, size = args
+    img_path = os.path.join(img_dir, f"{image_id}.jpg")
+    img = Image.open(img_path).convert("RGB")
+    img = img.resize((size, size), Image.BILINEAR)
+    return image_id, img
+
+def preload_images(image_ids, img_dir, size, max_workers=16):
+    """Load and resize all images into a dict {image_id: PIL.Image}."""
+    cache = {}
+    tasks = [(iid, img_dir, size) for iid in image_ids]
+    t0 = time.time()
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        for i, (iid, img) in enumerate(pool.map(_load_one, tasks)):
+            cache[iid] = img
+            if (i + 1) % 5000 == 0:
+                print(f"  cached {i+1}/{len(tasks)} images ({time.time()-t0:.0f}s)")
+    print(f"  cached {len(cache)} images in {time.time()-t0:.0f}s")
+    return cache
+
+# ---------------------------------------------------------------------------
 # Dataset
 # ---------------------------------------------------------------------------
 
+IMG_SIZE = 224  # EfficientNet-B0 native resolution
+
 class ISICDataset(Dataset):
-    def __init__(self, samples, img_dir, transform=None):
-        """
-        samples: list of (image_id, class_idx)
-        img_dir: path to image directory
-        transform: torchvision transform
-        """
+    def __init__(self, samples, transform=None, cache=None):
         self.samples = samples
-        self.img_dir = img_dir
         self.transform = transform
+        self.cache = cache
 
     def __len__(self):
         return len(self.samples)
 
     def __getitem__(self, idx):
         image_id, label = self.samples[idx]
-        img_path = os.path.join(self.img_dir, f"{image_id}.jpg")
-        img = Image.open(img_path).convert("RGB")
+        img = self.cache[image_id].copy()  # copy so transforms don't mutate cache
         if self.transform:
             img = self.transform(img)
         return img, label
 
 # ---------------------------------------------------------------------------
-# Transforms
+# Transforms  (no Resize — images are pre-resized in cache)
 # ---------------------------------------------------------------------------
-
-IMG_SIZE = 512
 
 def get_train_transform():
     return transforms.Compose([
-        transforms.Resize((IMG_SIZE, IMG_SIZE)),
         transforms.RandomHorizontalFlip(),
         transforms.RandomVerticalFlip(),
         transforms.RandomRotation(20),
@@ -137,7 +147,6 @@ def get_train_transform():
 
 def get_val_transform():
     return transforms.Compose([
-        transforms.Resize((IMG_SIZE, IMG_SIZE)),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
@@ -148,11 +157,9 @@ def get_val_transform():
 # ---------------------------------------------------------------------------
 
 def compute_class_weights(samples):
-    """Return a tensor of inverse-frequency weights for each class."""
     counts = np.zeros(prepare.NUM_CLASSES, dtype=np.float64)
     for _, cls_idx in samples:
         counts[cls_idx] += 1
-    # inverse frequency, normalised so weights sum to NUM_CLASSES
     weights = 1.0 / (counts + 1e-8)
     weights = weights / weights.sum() * prepare.NUM_CLASSES
     return torch.tensor(weights, dtype=torch.float32)
@@ -172,16 +179,23 @@ def get_dataloaders(batch_size=32, num_workers=4):
         seed=prepare.SEED,
     )
 
-    train_ds = ISICDataset(train_samples, prepare.TRAIN_IMG_DIR, get_train_transform())
-    val_ds = ISICDataset(val_samples, prepare.TRAIN_IMG_DIR, get_val_transform())
+    # Pre-load all images into RAM (eliminates network I/O during training)
+    all_ids = list(set(iid for iid, _ in train_samples + val_samples))
+    print(f"Pre-loading {len(all_ids)} images at {IMG_SIZE}x{IMG_SIZE}...")
+    cache = preload_images(all_ids, prepare.TRAIN_IMG_DIR, IMG_SIZE)
+
+    train_ds = ISICDataset(train_samples, get_train_transform(), cache)
+    val_ds = ISICDataset(val_samples, get_val_transform(), cache)
 
     train_loader = DataLoader(
         train_ds, batch_size=batch_size, shuffle=True,
         num_workers=num_workers, pin_memory=True, drop_last=True,
+        persistent_workers=True,
     )
     val_loader = DataLoader(
         val_ds, batch_size=batch_size, shuffle=False,
         num_workers=num_workers, pin_memory=True,
+        persistent_workers=True,
     )
 
     class_weights = compute_class_weights(train_samples)
