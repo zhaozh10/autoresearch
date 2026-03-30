@@ -24,14 +24,15 @@ sys.stderr.reconfigure(line_buffering=True)
 # Config
 # ---------------------------------------------------------------------------
 
-BATCH_SIZE = 96
-LR = 5e-4
+BATCH_SIZE = 64
+LR = 4e-4
 WEIGHT_DECAY = 1e-2
 NUM_WORKERS = 4
 LABEL_SMOOTHING = 0.1
 WARMUP_EPOCHS = 2
 CUTMIX_ALPHA = 1.0
 CUTMIX_PROB = 0.5
+EMA_DECAY = 0.999
 
 # ---------------------------------------------------------------------------
 # Model
@@ -39,13 +40,36 @@ CUTMIX_PROB = 0.5
 
 def build_model():
     model = timm.create_model(
-        "efficientnet_b2",
+        "efficientnet_b3",
         pretrained=True,
         num_classes=prepare.NUM_CLASSES,
         drop_rate=0.3,
         drop_path_rate=0.2,
     )
     return model
+
+# ---------------------------------------------------------------------------
+# EMA
+# ---------------------------------------------------------------------------
+
+class EMA:
+    def __init__(self, model, decay=0.999):
+        self.decay = decay
+        self.shadow = {k: v.clone().detach() for k, v in model.state_dict().items()}
+
+    @torch.no_grad()
+    def update(self, model):
+        for k, v in model.state_dict().items():
+            if v.is_floating_point():
+                self.shadow[k].mul_(self.decay).add_(v, alpha=1 - self.decay)
+            else:
+                self.shadow[k].copy_(v)
+
+    def apply(self, model):
+        model.load_state_dict(self.shadow)
+
+    def state_dict(self):
+        return self.shadow
 
 # ---------------------------------------------------------------------------
 # CutMix
@@ -147,7 +171,8 @@ def main():
 
     # Model
     model = build_model().to(device)
-    print(f"Model: efficientnet_b2 | Params: {sum(p.numel() for p in model.parameters()):,}")
+    print(f"Model: efficientnet_b3 | Params: {sum(p.numel() for p in model.parameters()):,}")
+    ema = EMA(model, decay=EMA_DECAY)
 
     # Loss with label smoothing
     criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=LABEL_SMOOTHING)
@@ -214,6 +239,7 @@ def main():
             scaler.step(optimizer)
             scaler.update()
             scheduler.step()
+            ema.update(model)
 
             running_loss += loss.item()
             n_batches += 1
@@ -231,6 +257,9 @@ def main():
 
         torch.save(model.state_dict(), last_path)
 
+        # Evaluate with EMA weights
+        orig_state = {k: v.clone() for k, v in model.state_dict().items()}
+        ema.apply(model)
         results = evaluate(model, val_loader, device)
         pm = results["primary_metric"]
         metrics = results["metrics"]
@@ -238,8 +267,9 @@ def main():
 
         if pm > best_metric:
             best_metric = pm
-            torch.save(model.state_dict(), best_path)
+            torch.save(model.state_dict(), best_path)  # save EMA weights
             print(f"  -> New best: {pm:.4f}")
+        model.load_state_dict(orig_state)  # restore original weights for training
 
     # --------------- Final report ---------------
     training_seconds = time.time() - (train_start or total_start)
