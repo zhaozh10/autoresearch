@@ -23,5 +23,6 @@ AGENTS.md
 # Experimental code/artifacts
 dev/
 
-# Results file
+# Results files
 results.tsv
+results_isic.tsv
