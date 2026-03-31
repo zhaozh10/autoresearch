@@ -37,10 +37,12 @@ class ISICDataset(Dataset):
         return img, label
 
 
-def get_transforms(is_train):
+def get_transforms(is_train, img_size=None):
+    if img_size is None:
+        img_size = IMG_SIZE
     if is_train:
         return T.Compose([
-            T.RandomResizedCrop(IMG_SIZE, scale=(0.8, 1.0), ratio=(0.9, 1.1)),
+            T.RandomResizedCrop(img_size, scale=(0.8, 1.0), ratio=(0.9, 1.1)),
             T.RandomHorizontalFlip(),
             T.RandomVerticalFlip(),
             T.RandomRotation(15),
@@ -50,8 +52,8 @@ def get_transforms(is_train):
         ])
     else:
         return T.Compose([
-            T.Resize(int(IMG_SIZE * 1.14)),
-            T.CenterCrop(IMG_SIZE),
+            T.Resize(int(img_size * 1.14)),
+            T.CenterCrop(img_size),
             T.ToTensor(),
             T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
         ])
@@ -100,7 +102,7 @@ def load_splits():
     return train_df, val_df
 
 
-def get_dataloaders(batch_size, num_workers=8, distributed=False):
+def get_dataloaders(batch_size, num_workers=8, distributed=False, img_size=None):
     """Create train and val dataloaders.
 
     Train loader uses DistributedSampler if distributed=True.
@@ -108,8 +110,8 @@ def get_dataloaders(batch_size, num_workers=8, distributed=False):
     """
     train_df, val_df = load_splits()
 
-    train_ds = ISICDataset(train_df, IMG_DIR, get_transforms(is_train=True))
-    val_ds = ISICDataset(val_df, IMG_DIR, get_transforms(is_train=False))
+    train_ds = ISICDataset(train_df, IMG_DIR, get_transforms(is_train=True, img_size=img_size))
+    val_ds = ISICDataset(val_df, IMG_DIR, get_transforms(is_train=False, img_size=img_size))
 
     train_sampler = DistributedSampler(train_ds, shuffle=True) if distributed else None
     train_loader = DataLoader(

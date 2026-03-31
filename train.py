@@ -19,7 +19,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 import timm
 from sklearn.metrics import roc_auc_score, roc_curve
 
-from prepare import TIME_BUDGET, SEED, IMG_SIZE
+from prepare import TIME_BUDGET, SEED
 from data import get_dataloaders
 
 # ---------------------------------------------------------------------------
@@ -28,10 +28,12 @@ from data import get_dataloaders
 
 BACKBONE = "convnext_base.fb_in22k_ft_in1k"
 PRETRAINED = True
-BATCH_SIZE = 48          # per GPU (larger model)
+BATCH_SIZE = 32          # per GPU (higher res)
+IMG_SIZE = 448           # override prepare.py default (384)
 LR = 5e-5
 WEIGHT_DECAY = 1e-4
 WARMUP_FRAC = 0.05       # fraction of time budget for LR warmup
+LABEL_SMOOTHING = 0.1
 NUM_WORKERS = 4
 
 # ---------------------------------------------------------------------------
@@ -129,6 +131,7 @@ def main():
     # Data
     train_loader, val_loader, train_sampler, pos_weight = get_dataloaders(
         batch_size=BATCH_SIZE, num_workers=NUM_WORKERS, distributed=distributed,
+        img_size=IMG_SIZE,
     )
     pos_weight = pos_weight.to(device)
 
@@ -181,7 +184,8 @@ def main():
             optimizer.zero_grad(set_to_none=True)
             with torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16):
                 logits = model(images).squeeze(-1)
-                loss = criterion(logits, labels)
+                smooth_labels = labels * (1 - LABEL_SMOOTHING) + 0.5 * LABEL_SMOOTHING
+                loss = criterion(logits, smooth_labels)
             loss.backward()
             optimizer.step()
 
