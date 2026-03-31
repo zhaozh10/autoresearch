@@ -112,7 +112,7 @@ def preload_images(image_ids, img_dir, size, max_workers=16):
 # Dataset
 # ---------------------------------------------------------------------------
 
-IMG_SIZE = 384  # Higher resolution for dermoscopy detail
+IMG_SIZE = 448  # Higher resolution for dermoscopy detail
 
 class ISICDataset(Dataset):
     def __init__(self, samples, transform=None, cache=None):

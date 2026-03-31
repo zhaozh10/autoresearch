@@ -24,8 +24,8 @@ sys.stderr.reconfigure(line_buffering=True)
 # Config
 # ---------------------------------------------------------------------------
 
-BATCH_SIZE = 64
-LR = 4e-4
+BATCH_SIZE = 48
+LR = 3e-4
 WEIGHT_DECAY = 1e-2
 NUM_WORKERS = 4
 LABEL_SMOOTHING = 0.1
@@ -188,7 +188,7 @@ def main():
     def lr_lambda(step):
         if step < warmup_steps:
             return step / max(warmup_steps, 1)
-        progress = (step - warmup_steps) / max(1, 50 * steps_per_epoch - warmup_steps)
+        progress = (step - warmup_steps) / max(1, 20 * steps_per_epoch - warmup_steps)
         return 0.5 * (1 + np.cos(np.pi * min(progress, 1.0)))
 
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
