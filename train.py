@@ -32,7 +32,7 @@ BATCH_SIZE = 64          # per GPU
 LR = 1e-4
 WEIGHT_DECAY = 1e-4
 WARMUP_FRAC = 0.05       # fraction of time budget for LR warmup
-NUM_WORKERS = 8
+NUM_WORKERS = 4
 
 # ---------------------------------------------------------------------------
 # Evaluation function (DO NOT MODIFY unless user requests)
@@ -53,8 +53,8 @@ def evaluate(model, val_loader, device):
             all_probs.append(probs.cpu())
             all_labels.append(labels.cpu())
 
-    probs = torch.cat(all_probs).numpy()
-    labels = torch.cat(all_labels).numpy()
+    probs = torch.cat(all_probs).float().numpy()
+    labels = torch.cat(all_labels).float().numpy()
 
     # AUC
     auc = roc_auc_score(labels, probs)
