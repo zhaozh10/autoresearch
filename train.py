@@ -26,10 +26,10 @@ from data import get_dataloaders
 # Hyperparameters
 # ---------------------------------------------------------------------------
 
-BACKBONE = "efficientnet_b3"
+BACKBONE = "convnext_base.fb_in22k_ft_in1k"
 PRETRAINED = True
-BATCH_SIZE = 64          # per GPU
-LR = 1e-4
+BATCH_SIZE = 48          # per GPU (larger model)
+LR = 5e-5
 WEIGHT_DECAY = 1e-4
 WARMUP_FRAC = 0.05       # fraction of time budget for LR warmup
 NUM_WORKERS = 4
