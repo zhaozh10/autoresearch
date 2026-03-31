@@ -45,7 +45,7 @@ To set up a new experiment, work with the user to:
   and only be accessed when user asks for a testing
 
 5. **Initialize results.tsv**:  
-   Create `results_isic.tsv` with only the header row:
+   Create `[runs/YYYYMMDD_HH/]results.tsv` with only the header row:
    ```
    commit	[#primary_metric] [#metrics] memory_gb	status	description
    ```
@@ -184,7 +184,7 @@ peak_vram_mb:     45060.2
 ---
 
 ## Logging results
-When an experiment is done, log it to `results_isic.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
+When an experiment is done, log it to `[runs/YYYYMMDD_HH/]results.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
 
 The TSV has a header row and several columns:
 
@@ -217,12 +217,12 @@ LOOP FOREVER:
 1. Look at the git state: the current branch/commit we're on
 2. Tune `train.py` or `data.py` or both with an experimental idea by directly hacking the code. You are recommended to learn from https://github.com/google-research/tuning_playbook. 
 3. git commit.
-4. Run the experiment: `uv run train.py > run.log 2>&1` (redirect everything — do NOT use tee or let output flood your context)
+4. Run the experiment: `uv run train.py > [runs/YYYYMMDD_HH/]run.log 2>&1` (redirect everything — do NOT use tee or let output flood your context)
 5. Extract results:
    ```
-   grep "primary_metric\|peak_vram_mb" run.log
+   grep "primary_metric\|peak_vram_mb" [runs/YYYYMMDD_HH/]run.log
    ```
-6. If the grep output is empty, the run crashed. Run `tail -n 50 run.log` to read the Python stack trace and attempt a fix. If you can't get things to work after more than a few attempts, give up.
+6. If the grep output is empty, the run crashed. Run `tail -n 50 [runs/YYYYMMDD_HH/]run.log` to read the Python stack trace and attempt a fix. If you can't get things to work after more than a few attempts, give up.
 7. Record the results in the tsv (NOTE: do not commit the results.tsv file, leave it untracked by git)
 8. If improved, you "advance" the branch, keeping the git commit.  
 9. If worse, you git reset back to where you started
