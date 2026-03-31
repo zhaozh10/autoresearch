@@ -11,7 +11,7 @@ To set up a new experiment, work with the user to:
 1. **Agree on a run tag**: propose a tag based on today's date (e.g. `mar30`). The branch `auto-isic/<tag>` must not already exist — this is a fresh run.
 
 2. **Create the branch**:  
-   `git checkout -b auto-isic/<tag>` from current master.
+   `git checkout -b auto-isic/<tag>` from auto-isic.
 
 3. **Read the in-scope files**:  
    The repo is small. Read these files for full context:
