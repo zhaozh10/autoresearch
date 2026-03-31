@@ -133,11 +133,11 @@ def main():
         batch_size=BATCH_SIZE, num_workers=NUM_WORKERS, distributed=distributed,
         img_size=IMG_SIZE,
     )
-    pos_weight = pos_weight.to(device)
+    pos_weight = pos_weight.to(device) * 1.5  # boost for higher sensitivity
 
     if is_main:
         print(f"Train: {len(train_loader.dataset)}, Val: {len(val_loader.dataset)}")
-        print(f"Pos weight (NV/MEL ratio): {pos_weight.item():.2f}")
+        print(f"Pos weight (boosted 1.5x): {pos_weight.item():.2f}")
         print(f"Backbone: {BACKBONE}, IMG_SIZE: {IMG_SIZE}, BATCH_SIZE: {BATCH_SIZE}")
         print(f"LR: {LR}, WEIGHT_DECAY: {WEIGHT_DECAY}")
         print(f"Time budget: {TIME_BUDGET}s")
