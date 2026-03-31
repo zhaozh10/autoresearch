@@ -175,9 +175,6 @@ def main():
         n_batches = 0
 
         for images, labels in train_loader:
-            if time.time() - t_start >= TIME_BUDGET and epoch > 0:
-                break
-
             images = images.to(device, non_blocking=True)
             labels = labels.to(device, non_blocking=True)
 
@@ -227,6 +224,10 @@ def main():
                 best_metrics = metrics.copy()
                 torch.save(ckpt, os.path.join(exp_dir, "checkpoints", "best.pth"))
                 print(f"  -> New best mel_sensitivity: {primary:.4f}")
+
+        # All ranks must wait for rank 0 evaluation before next epoch
+        if distributed:
+            dist.barrier()
 
         epoch += 1
 
