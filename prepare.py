@@ -16,7 +16,7 @@ import torch
 # Constants (fixed, do not modify)
 # ---------------------------------------------------------------------------
 
-TIME_BUDGET = 1800        # training time budget in seconds (30 minutes)
+TIME_BUDGET = 2400        # training time budget in seconds (40 minutes)
 
 
 # ---------------------------------------------------------------------------

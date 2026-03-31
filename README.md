@@ -15,7 +15,7 @@ The repo is deliberately kept small and only really has three files that matter:
 - **`train.py`** — model, optimizer, training loop, evaluation (written by agent). Everything is fair game: architecture, hyperparameters, optimizer, batch size, etc. **This file is edited and iterated on by the agent**.
 - **`program.md`** — baseline instructions for one agent. Point your agent here and let it go. **This file is edited and iterated on by the human**.
 
-By design, training runs for a **fixed 30-minute time budget** (wall clock, excluding startup/compilation), regardless of the details of your compute. In each run, trains a model, evaluates on validation set, logs metrics, and saves checkpoints.
+By design, training runs for a **fixed TIME_BUDGET/60-minute time budget** (wall clock, excluding startup/compilation), regardless of the details of your compute. In each run, trains a model, evaluates on validation set, logs metrics, and saves checkpoints.
 
 If you are new to neural networks, this ["Dummy's Guide"](https://x.com/hooeem/status/2030720614752039185) looks pretty good for a lot more context.
 
@@ -63,7 +63,7 @@ pyproject.toml  — dependencies
 ## Design choices
 
 - **File to modify.** During experiment loop, the agent only touches `train.py` and `data.py`. This keeps the scope manageable and diffs reviewable.
-- **Fixed time budget.** Training always runs for exactly 30 minutes, regardless of your specific platform. This means you can expect approx 2 experiments/hour and approx 18 experiments while you sleep. There are two upsides of this design decision. First, this makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc). Second, this means that autoresearch will find the most optimal model for your platform in that time budget. The downside is that your runs (and results) become not comparable to other people running on other compute platforms.
+- **Fixed time budget.** Training always runs for exactly TIME_BUDGET/60 minutes, regardless of your specific platform. This means you can expect approx 2 experiments/hour and approx 18 experiments while you sleep. There are two upsides of this design decision. First, this makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc). Second, this means that autoresearch will find the most optimal model for your platform in that time budget. The downside is that your runs (and results) become not comparable to other people running on other compute platforms.
 - **Self-contained.** No external dependencies beyond PyTorch and a few small packages. No distributed training, no complex configs. One GPU, one file, one metric.
 
 ## Platform support
