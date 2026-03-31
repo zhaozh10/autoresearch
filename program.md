@@ -94,7 +94,7 @@ This is a **critical step**.
 
 ## Experimentation
 
-Each experiment requires at least a single GPU. If multiple GPUs are available, please support multi-GPU training unless the computational demanding is quite low and thus a single GPU can handle it easily.
+Each experiment requires at least a single GPU. If multiple GPUs are available, please support and prioritize multi-GPU training  unless the computational demanding is quite low and thus a single GPU can handle it easily.
 
 - Fixed **training time budget: TIME_BUDGET**
 - Command:
