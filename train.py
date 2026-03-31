@@ -25,14 +25,14 @@ sys.stderr.reconfigure(line_buffering=True)
 # ---------------------------------------------------------------------------
 
 BATCH_SIZE = 48
-LR = 3e-4
+LR = 2e-4
 WEIGHT_DECAY = 1e-2
 NUM_WORKERS = 4
 LABEL_SMOOTHING = 0.1
-WARMUP_EPOCHS = 2
+WARMUP_EPOCHS = 1
 CUTMIX_ALPHA = 1.0
 CUTMIX_PROB = 0.5
-EMA_DECAY = 0.999
+USE_EMA = False
 
 # ---------------------------------------------------------------------------
 # Model
@@ -172,7 +172,7 @@ def main():
     # Model
     model = build_model().to(device)
     print(f"Model: efficientnetv2_s | Params: {sum(p.numel() for p in model.parameters()):,}")
-    ema = EMA(model, decay=EMA_DECAY)
+    ema = EMA(model) if USE_EMA else None
 
     # Loss with label smoothing
     criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=LABEL_SMOOTHING)
@@ -239,7 +239,8 @@ def main():
             scaler.step(optimizer)
             scaler.update()
             scheduler.step()
-            ema.update(model)
+            if ema:
+                ema.update(model)
 
             running_loss += loss.item()
             n_batches += 1
@@ -257,9 +258,10 @@ def main():
 
         torch.save(model.state_dict(), last_path)
 
-        # Evaluate with EMA weights
-        orig_state = {k: v.clone() for k, v in model.state_dict().items()}
-        ema.apply(model)
+        # Evaluate (with EMA weights if enabled)
+        if ema:
+            orig_state = {k: v.clone() for k, v in model.state_dict().items()}
+            ema.apply(model)
         results = evaluate(model, val_loader, device)
         pm = results["primary_metric"]
         metrics = results["metrics"]
@@ -267,9 +269,10 @@ def main():
 
         if pm > best_metric:
             best_metric = pm
-            torch.save(model.state_dict(), best_path)  # save EMA weights
+            torch.save(model.state_dict(), best_path)
             print(f"  -> New best: {pm:.4f}")
-        model.load_state_dict(orig_state)  # restore original weights for training
+        if ema:
+            model.load_state_dict(orig_state)
 
     # --------------- Final report ---------------
     training_seconds = time.time() - (train_start or total_start)
