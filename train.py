@@ -40,7 +40,7 @@ EMA_DECAY = 0.999
 
 def build_model():
     model = timm.create_model(
-        "efficientnet_b3",
+        "tf_efficientnetv2_s.in21k_ft_in1k",
         pretrained=True,
         num_classes=prepare.NUM_CLASSES,
         drop_rate=0.3,
@@ -171,7 +171,7 @@ def main():
 
     # Model
     model = build_model().to(device)
-    print(f"Model: efficientnet_b3 | Params: {sum(p.numel() for p in model.parameters()):,}")
+    print(f"Model: efficientnetv2_s | Params: {sum(p.numel() for p in model.parameters()):,}")
     ema = EMA(model, decay=EMA_DECAY)
 
     # Loss with label smoothing
