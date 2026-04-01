@@ -1,0 +1,17 @@
+commit	mel_sensitivity	mel_specificity	auc	f1	threshold	memory_gb	status	description
+be3c4e3	0.8482	0.7188	0.8756	0.6545	0.220	15.3	keep	baseline: efficientnet_b3 pretrained 384px cosine LR
+4e9e470	0.8615	0.8274	0.9159	0.7434	0.383	19.0	keep	convnext_base IN22k+IN1k LR=5e-5 batch48
+c9e4ef1	0.8821	0.8107	0.9201	0.7404	0.424	17.1	keep	convnext_base 448px label_smooth=0.1 batch32
+92ba4c5	0.8400	0.8576	0.9008	0.7580	0.197	21.6	discard	convnext_large 448px - overfits on small dataset
+27f4d1a	0.8462	0.8410	0.9139	0.7466	0.361	17.4	discard	EMA+stronger aug - too much regularization
+108d974	0.8287	0.8142	0.8968	0.7144	0.258	17.7	discard	freeze-then-unfreeze - head-only too weak
+71ef87a	0.8872	0.8018	0.9153	0.7359	0.377	17.4	keep	convnext_base 448px pos_weight*1.5 label_smooth=0.1
+e97354b	0.8708	0.8080	0.9038	0.7322	0.326	17.4	discard	pos_weight*2.0 - too aggressive
+c5fadb8	0.9015	0.7642	0.9174	0.7141	0.207	17.4	keep	focal loss gamma=2 + pos_weight*1.5
+ac69c23	0.8677	0.8344	0.9279	0.7527	0.285	17.4	discard	focal+EMA - EMA smooths out sensitivity peaks
+51baf86	0.8749	0.7975	0.9212	0.7260	0.451	17.1	discard	wd=5e-4+grad_clip - too constrained
+76df3e8	0.8503	0.8018	0.9090	0.7162	0.479	17.1	discard	LLRD=0.65 - constrains too much
+103c289	0.8892	0.7552	0.9124	0.7012	0.275	17.1	discard	no label smoothing - slightly worse
+9410c05	0.8810	0.7816	0.9157	0.7167	0.418	17.1	discard	LR=1e-4 - overshoots
+1fd8c83	0.8615	0.8018	0.9159	0.7223	0.490	16.7	discard	512px - fewer epochs and no benefit
+3a237bc	0.8533	0.8084	0.9192	0.7232	0.124	29.8	discard	ConvNeXtV2 FCMAE - worse than V1
