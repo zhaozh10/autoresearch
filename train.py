@@ -34,7 +34,33 @@ LR = 5e-5
 WEIGHT_DECAY = 1e-4
 WARMUP_FRAC = 0.05       # fraction of time budget for LR warmup
 LABEL_SMOOTHING = 0.1
+FOCAL_GAMMA = 2.0        # focal loss gamma (0 = standard BCE)
 NUM_WORKERS = 4
+
+
+# ---------------------------------------------------------------------------
+# Focal loss
+# ---------------------------------------------------------------------------
+
+class FocalBCEWithLogitsLoss(nn.Module):
+    """Binary focal loss with pos_weight support."""
+    def __init__(self, gamma=2.0, pos_weight=None):
+        super().__init__()
+        self.gamma = gamma
+        self.pos_weight = pos_weight
+
+    def forward(self, logits, targets):
+        bce = nn.functional.binary_cross_entropy_with_logits(
+            logits, targets, reduction="none",
+        )
+        # Apply pos_weight manually
+        if self.pos_weight is not None:
+            weight = targets * (self.pos_weight - 1) + 1
+            bce = bce * weight
+        p = torch.sigmoid(logits)
+        pt = targets * p + (1 - targets) * (1 - p)
+        focal_weight = (1 - pt) ** self.gamma
+        return (focal_weight * bce).mean()
 
 # ---------------------------------------------------------------------------
 # Evaluation function (DO NOT MODIFY unless user requests)
@@ -149,7 +175,7 @@ def main():
         model = DDP(model, device_ids=[local_rank])
 
     # Loss and optimizer
-    criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
+    criterion = FocalBCEWithLogitsLoss(gamma=FOCAL_GAMMA, pos_weight=pos_weight)
     optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
 
     # Training loop
