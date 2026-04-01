@@ -35,6 +35,7 @@ WEIGHT_DECAY = 1e-4
 WARMUP_FRAC = 0.05       # fraction of time budget for LR warmup
 LABEL_SMOOTHING = 0.1
 FOCAL_GAMMA = 2.0        # focal loss gamma (0 = standard BCE)
+MIXUP_ALPHA = 0.3        # mixup interpolation strength
 NUM_WORKERS = 4
 
 
@@ -206,6 +207,13 @@ def main():
         for images, labels in train_loader:
             images = images.to(device, non_blocking=True)
             labels = labels.to(device, non_blocking=True)
+
+            # Mixup
+            if MIXUP_ALPHA > 0:
+                lam = np.random.beta(MIXUP_ALPHA, MIXUP_ALPHA)
+                idx = torch.randperm(images.size(0), device=device)
+                images = lam * images + (1 - lam) * images[idx]
+                labels = lam * labels + (1 - lam) * labels[idx]
 
             optimizer.zero_grad(set_to_none=True)
             with torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16):
