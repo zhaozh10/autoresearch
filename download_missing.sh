@@ -1,0 +1,532 @@
+#!/bin/bash
+set -e
+echo -n "Enter PhysioNet password: "
+read -s PASSWORD
+echo
+
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5/9e16211ac292911bcae2e254132f9350.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5/9e16211ac292911bcae2e254132f9350.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed2e76db5f80d08cda9b1b48741e14c5/9e16211ac292911bcae2e254132f9350.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5/e95a69604ff1ee71270226e9f78b0e5c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5/e95a69604ff1ee71270226e9f78b0e5c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed2e76db5f80d08cda9b1b48741e14c5/e95a69604ff1ee71270226e9f78b0e5c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5/fe6ee1d3a16de3258646e80b5ea6f0a8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed2e76db5f80d08cda9b1b48741e14c5/fe6ee1d3a16de3258646e80b5ea6f0a8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed2e76db5f80d08cda9b1b48741e14c5/fe6ee1d3a16de3258646e80b5ea6f0a8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/54c8182e7e9bd93dae9b976f9a3cefd1.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/54c8182e7e9bd93dae9b976f9a3cefd1.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed40278eaede3cc5e9d11b8127c4e267/54c8182e7e9bd93dae9b976f9a3cefd1.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/73aec5457206aa888a294a6f6159301d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/73aec5457206aa888a294a6f6159301d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed40278eaede3cc5e9d11b8127c4e267/73aec5457206aa888a294a6f6159301d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/c11582c24ac550d1e64eebbd4de4aba7.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/c11582c24ac550d1e64eebbd4de4aba7.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed40278eaede3cc5e9d11b8127c4e267/c11582c24ac550d1e64eebbd4de4aba7.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/dd4cf9bd2358762caeeaead91af970a8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed40278eaede3cc5e9d11b8127c4e267/dd4cf9bd2358762caeeaead91af970a8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed40278eaede3cc5e9d11b8127c4e267/dd4cf9bd2358762caeeaead91af970a8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/1466ede526afc1f0a9c07469ab298cb4.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/1466ede526afc1f0a9c07469ab298cb4.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed50faf92eb8dcce3cecb74b0aaffde2/1466ede526afc1f0a9c07469ab298cb4.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/68b5530fd028466c156e6156d672f92d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/68b5530fd028466c156e6156d672f92d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed50faf92eb8dcce3cecb74b0aaffde2/68b5530fd028466c156e6156d672f92d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/78f7a4b174948d0dc55300c758e63a29.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/78f7a4b174948d0dc55300c758e63a29.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed50faf92eb8dcce3cecb74b0aaffde2/78f7a4b174948d0dc55300c758e63a29.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/d8f539f27dcf544fc780f298e124e95b.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed50faf92eb8dcce3cecb74b0aaffde2/d8f539f27dcf544fc780f298e124e95b.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed50faf92eb8dcce3cecb74b0aaffde2/d8f539f27dcf544fc780f298e124e95b.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/1978381bad1e40083fa78c350f3dff64.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/1978381bad1e40083fa78c350f3dff64.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed516aec2d4cbbec27fe135e199fca04/1978381bad1e40083fa78c350f3dff64.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/43be24ae11c15a4f9da5f41ecb888f65.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/43be24ae11c15a4f9da5f41ecb888f65.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed516aec2d4cbbec27fe135e199fca04/43be24ae11c15a4f9da5f41ecb888f65.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/8c1e46d61a8523467d6235fc542c3c58.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/8c1e46d61a8523467d6235fc542c3c58.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed516aec2d4cbbec27fe135e199fca04/8c1e46d61a8523467d6235fc542c3c58.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/de9aa89511ff7802f2a761d9062c1357.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed516aec2d4cbbec27fe135e199fca04/de9aa89511ff7802f2a761d9062c1357.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed516aec2d4cbbec27fe135e199fca04/de9aa89511ff7802f2a761d9062c1357.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/1b44ec25f2859a76c7272b240e25e336.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/1b44ec25f2859a76c7272b240e25e336.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed57df0b0549ec005fedec9dd9a23a99/1b44ec25f2859a76c7272b240e25e336.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/2b7c87128f56b5f9d9a51aac8c8992bf.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/2b7c87128f56b5f9d9a51aac8c8992bf.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed57df0b0549ec005fedec9dd9a23a99/2b7c87128f56b5f9d9a51aac8c8992bf.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/a78ee290e836f30af608cffaed097211.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/a78ee290e836f30af608cffaed097211.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed57df0b0549ec005fedec9dd9a23a99/a78ee290e836f30af608cffaed097211.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/bf49bb830161fdf44133c013723298ad.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed57df0b0549ec005fedec9dd9a23a99/bf49bb830161fdf44133c013723298ad.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed57df0b0549ec005fedec9dd9a23a99/bf49bb830161fdf44133c013723298ad.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/6c0c15b8cb8baa8f584a1d91ec1ecae5.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/6c0c15b8cb8baa8f584a1d91ec1ecae5.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed5dea55ecf33c190878bf1a5b3e96d7/6c0c15b8cb8baa8f584a1d91ec1ecae5.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/8d2014099621d3836f9bc2c9db829946.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/8d2014099621d3836f9bc2c9db829946.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed5dea55ecf33c190878bf1a5b3e96d7/8d2014099621d3836f9bc2c9db829946.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/9b5a48cda932576fef31523b44e94643.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/9b5a48cda932576fef31523b44e94643.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed5dea55ecf33c190878bf1a5b3e96d7/9b5a48cda932576fef31523b44e94643.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/c59fa6614a338fd9478867016958fa9a.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed5dea55ecf33c190878bf1a5b3e96d7/c59fa6614a338fd9478867016958fa9a.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed5dea55ecf33c190878bf1a5b3e96d7/c59fa6614a338fd9478867016958fa9a.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/1b4b869ab051891afb33e2779babcc4f.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/1b4b869ab051891afb33e2779babcc4f.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed6fc1ef1ff606bd66699b7207ab39bf/1b4b869ab051891afb33e2779babcc4f.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/696e0e48406b203bfa6f94f7ab26a6b3.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/696e0e48406b203bfa6f94f7ab26a6b3.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed6fc1ef1ff606bd66699b7207ab39bf/696e0e48406b203bfa6f94f7ab26a6b3.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/b6f91d970840088e0fc5e42b0b7ff01b.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/b6f91d970840088e0fc5e42b0b7ff01b.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed6fc1ef1ff606bd66699b7207ab39bf/b6f91d970840088e0fc5e42b0b7ff01b.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/cde7b0e963f0938970e245674a83722c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed6fc1ef1ff606bd66699b7207ab39bf/cde7b0e963f0938970e245674a83722c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed6fc1ef1ff606bd66699b7207ab39bf/cde7b0e963f0938970e245674a83722c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/1b88fa36a9eb1392d5466ee72c00628b.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/1b88fa36a9eb1392d5466ee72c00628b.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed7f31c3f0b50313bc146dddf041b62b/1b88fa36a9eb1392d5466ee72c00628b.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/5ac32709f4b331f917ce22fb5d112880.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/5ac32709f4b331f917ce22fb5d112880.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed7f31c3f0b50313bc146dddf041b62b/5ac32709f4b331f917ce22fb5d112880.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/75a87bcb039d695ed0fc529740ce831a.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/75a87bcb039d695ed0fc529740ce831a.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed7f31c3f0b50313bc146dddf041b62b/75a87bcb039d695ed0fc529740ce831a.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/8da747bb4ead7308f129bef1f4055a5c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed7f31c3f0b50313bc146dddf041b62b/8da747bb4ead7308f129bef1f4055a5c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed7f31c3f0b50313bc146dddf041b62b/8da747bb4ead7308f129bef1f4055a5c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/0298a7e443b178300c714a59a3883576.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/0298a7e443b178300c714a59a3883576.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed977bccc4eb1386b607e5de6cc95ec5/0298a7e443b178300c714a59a3883576.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/20ca5508823ad798127f58138e104f64.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/20ca5508823ad798127f58138e104f64.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed977bccc4eb1386b607e5de6cc95ec5/20ca5508823ad798127f58138e104f64.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/30d18565f078f8b51781751804b50923.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/30d18565f078f8b51781751804b50923.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed977bccc4eb1386b607e5de6cc95ec5/30d18565f078f8b51781751804b50923.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/878a804f530a1598f911e7046af0c3e7.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed977bccc4eb1386b607e5de6cc95ec5/878a804f530a1598f911e7046af0c3e7.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed977bccc4eb1386b607e5de6cc95ec5/878a804f530a1598f911e7046af0c3e7.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/441e0fec8bac5f4dfcc2bcac5f210195.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/441e0fec8bac5f4dfcc2bcac5f210195.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed9c3ced63b8194c9d91c4ebc531b010/441e0fec8bac5f4dfcc2bcac5f210195.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/c569fb2f1e28de0e3eb7470300e94d5c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/c569fb2f1e28de0e3eb7470300e94d5c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed9c3ced63b8194c9d91c4ebc531b010/c569fb2f1e28de0e3eb7470300e94d5c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/e3b4c422a84ae3c547e597152b135350.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/e3b4c422a84ae3c547e597152b135350.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed9c3ced63b8194c9d91c4ebc531b010/e3b4c422a84ae3c547e597152b135350.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/e556068449cf3a85fcff1a1f1c1f3169.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ed9c3ced63b8194c9d91c4ebc531b010/e556068449cf3a85fcff1a1f1c1f3169.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ed9c3ced63b8194c9d91c4ebc531b010/e556068449cf3a85fcff1a1f1c1f3169.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/28ff5d6c06903753c1fc1e8354fdb0f1.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/28ff5d6c06903753c1fc1e8354fdb0f1.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eda2dcc6c185ed23876e9a7e1d23eef0/28ff5d6c06903753c1fc1e8354fdb0f1.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/726fe436c72772a6d59446292edd33e3.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/726fe436c72772a6d59446292edd33e3.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eda2dcc6c185ed23876e9a7e1d23eef0/726fe436c72772a6d59446292edd33e3.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/a01b3c740945f39fb71fdb0cd5fe4218.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/a01b3c740945f39fb71fdb0cd5fe4218.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eda2dcc6c185ed23876e9a7e1d23eef0/a01b3c740945f39fb71fdb0cd5fe4218.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/a2ba78015800d0761392f82038d8fee8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eda2dcc6c185ed23876e9a7e1d23eef0/a2ba78015800d0761392f82038d8fee8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eda2dcc6c185ed23876e9a7e1d23eef0/a2ba78015800d0761392f82038d8fee8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/1c136bd505710162d2f48e827c0a78df.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/1c136bd505710162d2f48e827c0a78df.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edc4825b4402b236eaf629800a55a102/1c136bd505710162d2f48e827c0a78df.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/b2f66effccc68215e43b3db0ea224523.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/b2f66effccc68215e43b3db0ea224523.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edc4825b4402b236eaf629800a55a102/b2f66effccc68215e43b3db0ea224523.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/efa14b1df31636822e9d1f1bb250990f.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/efa14b1df31636822e9d1f1bb250990f.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edc4825b4402b236eaf629800a55a102/efa14b1df31636822e9d1f1bb250990f.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/ff7fe1eed46e83a6fe2bd12fce3f6851.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edc4825b4402b236eaf629800a55a102/ff7fe1eed46e83a6fe2bd12fce3f6851.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edc4825b4402b236eaf629800a55a102/ff7fe1eed46e83a6fe2bd12fce3f6851.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/2cedf9121ad3313794d4a2a98ba4a625.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/2cedf9121ad3313794d4a2a98ba4a625.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd16a2820376d88e615f1461f711d89/2cedf9121ad3313794d4a2a98ba4a625.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/a09684693b5555763139afc0c0f87369.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/a09684693b5555763139afc0c0f87369.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd16a2820376d88e615f1461f711d89/a09684693b5555763139afc0c0f87369.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/be78f120687426784bc691d838802a07.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/be78f120687426784bc691d838802a07.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd16a2820376d88e615f1461f711d89/be78f120687426784bc691d838802a07.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/c6fb761021e4b2185c5a390a5d2ae394.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd16a2820376d88e615f1461f711d89/c6fb761021e4b2185c5a390a5d2ae394.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd16a2820376d88e615f1461f711d89/c6fb761021e4b2185c5a390a5d2ae394.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/5ddc3f10f73af12cc6fe0fcb22c23063.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/5ddc3f10f73af12cc6fe0fcb22c23063.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd84540c83e99858b53744a178a7e72/5ddc3f10f73af12cc6fe0fcb22c23063.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/6aed0b1c8608876e86920f16feed16ed.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/6aed0b1c8608876e86920f16feed16ed.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd84540c83e99858b53744a178a7e72/6aed0b1c8608876e86920f16feed16ed.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/7c52b72abd40a99b61fa40d259c7f2c7.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/7c52b72abd40a99b61fa40d259c7f2c7.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd84540c83e99858b53744a178a7e72/7c52b72abd40a99b61fa40d259c7f2c7.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/ce9d67befc1d110b449a425ffa522d0b.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edd84540c83e99858b53744a178a7e72/ce9d67befc1d110b449a425ffa522d0b.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edd84540c83e99858b53744a178a7e72/ce9d67befc1d110b449a425ffa522d0b.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/24cf15b0ca1ec863c9840e9442eaed51.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/24cf15b0ca1ec863c9840e9442eaed51.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edeb665b46be2c53fdfe54de4689e7eb/24cf15b0ca1ec863c9840e9442eaed51.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/82f5fce0327ea923eefe03acd665a061.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/82f5fce0327ea923eefe03acd665a061.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edeb665b46be2c53fdfe54de4689e7eb/82f5fce0327ea923eefe03acd665a061.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/91b56dab8873e1bf56a4ade2b0d02fba.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/91b56dab8873e1bf56a4ade2b0d02fba.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edeb665b46be2c53fdfe54de4689e7eb/91b56dab8873e1bf56a4ade2b0d02fba.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/c550be907c02d0f89a264b0cda64e1c6.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edeb665b46be2c53fdfe54de4689e7eb/c550be907c02d0f89a264b0cda64e1c6.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edeb665b46be2c53fdfe54de4689e7eb/c550be907c02d0f89a264b0cda64e1c6.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/40992a31974507053cc02cb9cfc009e8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/40992a31974507053cc02cb9cfc009e8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edf77542898e717cb2c613d62c1878e1/40992a31974507053cc02cb9cfc009e8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/501c8fb0680d3e0840d9af6588cd9fd7.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/501c8fb0680d3e0840d9af6588cd9fd7.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edf77542898e717cb2c613d62c1878e1/501c8fb0680d3e0840d9af6588cd9fd7.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/8012fd0231e8048aa79376dc2dd06e7d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/8012fd0231e8048aa79376dc2dd06e7d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edf77542898e717cb2c613d62c1878e1/8012fd0231e8048aa79376dc2dd06e7d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/fd02be44b72dc7f5afebd3acdf26d041.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/edf77542898e717cb2c613d62c1878e1/fd02be44b72dc7f5afebd3acdf26d041.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/edf77542898e717cb2c613d62c1878e1/fd02be44b72dc7f5afebd3acdf26d041.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/2c17214c47f41dd26ce89c30a3d98bdd.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/2c17214c47f41dd26ce89c30a3d98bdd.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee117236523dbd94ef212e6b12eaca61/2c17214c47f41dd26ce89c30a3d98bdd.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/4fa34b85d006e054e0a87f01686388d6.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/4fa34b85d006e054e0a87f01686388d6.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee117236523dbd94ef212e6b12eaca61/4fa34b85d006e054e0a87f01686388d6.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/5cbdd1d7056d58753aab0b2a87c49fd8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/5cbdd1d7056d58753aab0b2a87c49fd8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee117236523dbd94ef212e6b12eaca61/5cbdd1d7056d58753aab0b2a87c49fd8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/c23e79de744ae741ec38e1f8db631798.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee117236523dbd94ef212e6b12eaca61/c23e79de744ae741ec38e1f8db631798.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee117236523dbd94ef212e6b12eaca61/c23e79de744ae741ec38e1f8db631798.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/8dbec33fe2b638cfa610e542e3dfafef.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/8dbec33fe2b638cfa610e542e3dfafef.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee13646de89c94bdaa6d0cb751f1c3eb/8dbec33fe2b638cfa610e542e3dfafef.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/9d828bc638fcdad9c77cffbac4e9da61.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/9d828bc638fcdad9c77cffbac4e9da61.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee13646de89c94bdaa6d0cb751f1c3eb/9d828bc638fcdad9c77cffbac4e9da61.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/af40b177eb81535e1ba20d9488e35a4c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/af40b177eb81535e1ba20d9488e35a4c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee13646de89c94bdaa6d0cb751f1c3eb/af40b177eb81535e1ba20d9488e35a4c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/fb54805d9d414c65b05a946fad64eec1.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee13646de89c94bdaa6d0cb751f1c3eb/fb54805d9d414c65b05a946fad64eec1.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee13646de89c94bdaa6d0cb751f1c3eb/fb54805d9d414c65b05a946fad64eec1.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/0f28a08ac93c67606f55ec62e65a5f3c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/0f28a08ac93c67606f55ec62e65a5f3c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee150414982fb632bdcb898ea16348d7/0f28a08ac93c67606f55ec62e65a5f3c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/301699db2a39541febd69621250da6bf.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/301699db2a39541febd69621250da6bf.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee150414982fb632bdcb898ea16348d7/301699db2a39541febd69621250da6bf.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/4d0402eee98164e80d948876915a4c72.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/4d0402eee98164e80d948876915a4c72.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee150414982fb632bdcb898ea16348d7/4d0402eee98164e80d948876915a4c72.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/ce1872153fa92420ae5b93ce7d4c17e0.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee150414982fb632bdcb898ea16348d7/ce1872153fa92420ae5b93ce7d4c17e0.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee150414982fb632bdcb898ea16348d7/ce1872153fa92420ae5b93ce7d4c17e0.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/4370c1f40ab1c1c73e46b38364df1498.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/4370c1f40ab1c1c73e46b38364df1498.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee2b9aa2efd32127a13f7e05f81300fd/4370c1f40ab1c1c73e46b38364df1498.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/5174d32ab56c3e098c644e76ce77325d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/5174d32ab56c3e098c644e76ce77325d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee2b9aa2efd32127a13f7e05f81300fd/5174d32ab56c3e098c644e76ce77325d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/c1dc717b59cf12044373748ca7f47c98.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/c1dc717b59cf12044373748ca7f47c98.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee2b9aa2efd32127a13f7e05f81300fd/c1dc717b59cf12044373748ca7f47c98.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/fa006ca529380c89622854e6034ce1a4.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee2b9aa2efd32127a13f7e05f81300fd/fa006ca529380c89622854e6034ce1a4.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee2b9aa2efd32127a13f7e05f81300fd/fa006ca529380c89622854e6034ce1a4.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/8100af33edc349eebf986b786a5ad24c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/8100af33edc349eebf986b786a5ad24c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3551c7153c8549f6b423de9a7ae3c0/8100af33edc349eebf986b786a5ad24c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/9b36259d5b95910792829aa8184af692.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/9b36259d5b95910792829aa8184af692.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3551c7153c8549f6b423de9a7ae3c0/9b36259d5b95910792829aa8184af692.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/bf99a6a1248bd5af6be881a72966071e.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/bf99a6a1248bd5af6be881a72966071e.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3551c7153c8549f6b423de9a7ae3c0/bf99a6a1248bd5af6be881a72966071e.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/e6db66d3121fc251527bd5fcbac1b6f8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3551c7153c8549f6b423de9a7ae3c0/e6db66d3121fc251527bd5fcbac1b6f8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3551c7153c8549f6b423de9a7ae3c0/e6db66d3121fc251527bd5fcbac1b6f8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/9df51428bb4ab141114185bccbbe5577.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/9df51428bb4ab141114185bccbbe5577.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/9df51428bb4ab141114185bccbbe5577.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/9dfaebb973bccfb2e80051f76c9b79c6.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/9dfaebb973bccfb2e80051f76c9b79c6.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/9dfaebb973bccfb2e80051f76c9b79c6.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/df31e83fab477a6190e8c83092a58a06.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/df31e83fab477a6190e8c83092a58a06.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/df31e83fab477a6190e8c83092a58a06.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/fe427fb99ac5cca289fc6d1ac2ed6b0f.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/fe427fb99ac5cca289fc6d1ac2ed6b0f.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee3d4d9270a1ecbdfebf1cdff860a7dd/fe427fb99ac5cca289fc6d1ac2ed6b0f.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/1199db92d3a8a74716abd55b4b82800e.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/1199db92d3a8a74716abd55b4b82800e.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee4ebd1cab6bab79c06c03b176b52ad4/1199db92d3a8a74716abd55b4b82800e.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/191736df900ffd871eef48069bb7bf82.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/191736df900ffd871eef48069bb7bf82.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee4ebd1cab6bab79c06c03b176b52ad4/191736df900ffd871eef48069bb7bf82.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/ad1f232f16f323d012feb921fa13931c.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/ad1f232f16f323d012feb921fa13931c.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee4ebd1cab6bab79c06c03b176b52ad4/ad1f232f16f323d012feb921fa13931c.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/d1ff331160a9d9d0e0374249cd6f5f4a.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee4ebd1cab6bab79c06c03b176b52ad4/d1ff331160a9d9d0e0374249cd6f5f4a.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee4ebd1cab6bab79c06c03b176b52ad4/d1ff331160a9d9d0e0374249cd6f5f4a.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/839b9ed9eb2a1c1f41ae00cb4d5dca75.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/839b9ed9eb2a1c1f41ae00cb4d5dca75.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7524235122232251864bcacd15b7e9/839b9ed9eb2a1c1f41ae00cb4d5dca75.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/e9560abca5133bb922bb2f12ba61e2a9.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/e9560abca5133bb922bb2f12ba61e2a9.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7524235122232251864bcacd15b7e9/e9560abca5133bb922bb2f12ba61e2a9.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/eea5e93fef87bf2db75a83767fedcbf0.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/eea5e93fef87bf2db75a83767fedcbf0.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7524235122232251864bcacd15b7e9/eea5e93fef87bf2db75a83767fedcbf0.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/f8d99a6b19dce69d28c5b5f4747dba43.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7524235122232251864bcacd15b7e9/f8d99a6b19dce69d28c5b5f4747dba43.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7524235122232251864bcacd15b7e9/f8d99a6b19dce69d28c5b5f4747dba43.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/0030e8ecd610d6a0d1a53f2c2ee5cc20.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/0030e8ecd610d6a0d1a53f2c2ee5cc20.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7f5b44c65775d7333eaf11c7bfec28/0030e8ecd610d6a0d1a53f2c2ee5cc20.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/46c7681ca4ce3840dbb571888ac441f6.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/46c7681ca4ce3840dbb571888ac441f6.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7f5b44c65775d7333eaf11c7bfec28/46c7681ca4ce3840dbb571888ac441f6.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/63fc521ced493ebfa0ecffd0799c848b.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/63fc521ced493ebfa0ecffd0799c848b.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7f5b44c65775d7333eaf11c7bfec28/63fc521ced493ebfa0ecffd0799c848b.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/815a01df4d652b3f9767ac1e8601f588.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee7f5b44c65775d7333eaf11c7bfec28/815a01df4d652b3f9767ac1e8601f588.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee7f5b44c65775d7333eaf11c7bfec28/815a01df4d652b3f9767ac1e8601f588.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/2f798d9c28973f1e447fd784828e00fa.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/2f798d9c28973f1e447fd784828e00fa.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8274cb63e7d48b7d06ecf2499ac107/2f798d9c28973f1e447fd784828e00fa.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/5f7975b906bb03f846d92480765f98b9.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/5f7975b906bb03f846d92480765f98b9.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8274cb63e7d48b7d06ecf2499ac107/5f7975b906bb03f846d92480765f98b9.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/93fac95003fe6699646424334513ab0d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/93fac95003fe6699646424334513ab0d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8274cb63e7d48b7d06ecf2499ac107/93fac95003fe6699646424334513ab0d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/a222b87dd7980fb7521288ad09454ff8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8274cb63e7d48b7d06ecf2499ac107/a222b87dd7980fb7521288ad09454ff8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8274cb63e7d48b7d06ecf2499ac107/a222b87dd7980fb7521288ad09454ff8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/147949f2e731305523d861f57a1a8b10.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/147949f2e731305523d861f57a1a8b10.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8f4bc15a43f69b8926148c5b754d02/147949f2e731305523d861f57a1a8b10.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/1e322c14db1a2e4cb7e20b2c499d9d87.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/1e322c14db1a2e4cb7e20b2c499d9d87.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8f4bc15a43f69b8926148c5b754d02/1e322c14db1a2e4cb7e20b2c499d9d87.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/380d09606d84e546675b4a1f5d43fea1.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/380d09606d84e546675b4a1f5d43fea1.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8f4bc15a43f69b8926148c5b754d02/380d09606d84e546675b4a1f5d43fea1.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/999fe4f7e84735d9e509e16a118e2f52.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee8f4bc15a43f69b8926148c5b754d02/999fe4f7e84735d9e509e16a118e2f52.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee8f4bc15a43f69b8926148c5b754d02/999fe4f7e84735d9e509e16a118e2f52.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/1e083bff1f7c4ac1df6719dffe6d7087.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/1e083bff1f7c4ac1df6719dffe6d7087.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9bf31cd82be0b553803beb7f7bf687/1e083bff1f7c4ac1df6719dffe6d7087.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/5aa69142a25db806facbebc4c9f73187.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/5aa69142a25db806facbebc4c9f73187.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9bf31cd82be0b553803beb7f7bf687/5aa69142a25db806facbebc4c9f73187.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/e6fa18d9685f67e47e9abd1edf97d8fe.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/e6fa18d9685f67e47e9abd1edf97d8fe.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9bf31cd82be0b553803beb7f7bf687/e6fa18d9685f67e47e9abd1edf97d8fe.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/e71457fb3cf5896c1175c9709e547958.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9bf31cd82be0b553803beb7f7bf687/e71457fb3cf5896c1175c9709e547958.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9bf31cd82be0b553803beb7f7bf687/e71457fb3cf5896c1175c9709e547958.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/42fb9fa4d5a3031a9e5fdee6576ffdae.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/42fb9fa4d5a3031a9e5fdee6576ffdae.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9d80b6a381cd5e74d897f2b53d8d9d/42fb9fa4d5a3031a9e5fdee6576ffdae.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/4e9c3817f37691ef45459ac7e2940e1d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/4e9c3817f37691ef45459ac7e2940e1d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9d80b6a381cd5e74d897f2b53d8d9d/4e9c3817f37691ef45459ac7e2940e1d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/90746b424c638da487b2992268e70ba9.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/90746b424c638da487b2992268e70ba9.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9d80b6a381cd5e74d897f2b53d8d9d/90746b424c638da487b2992268e70ba9.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/fffdc4e37fd29095823d6d3e4d1bf338.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/ee9d80b6a381cd5e74d897f2b53d8d9d/fffdc4e37fd29095823d6d3e4d1bf338.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/ee9d80b6a381cd5e74d897f2b53d8d9d/fffdc4e37fd29095823d6d3e4d1bf338.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/4494c6e2c08435784d5b1f25ac7b5869.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/4494c6e2c08435784d5b1f25ac7b5869.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eeb18c719cadabcc5ec397a53be529db/4494c6e2c08435784d5b1f25ac7b5869.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/5497b57c2343f631bffdaea2672a1704.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/5497b57c2343f631bffdaea2672a1704.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eeb18c719cadabcc5ec397a53be529db/5497b57c2343f631bffdaea2672a1704.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/5fd515ea4eaec3493943c4eef796b41e.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/5fd515ea4eaec3493943c4eef796b41e.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eeb18c719cadabcc5ec397a53be529db/5fd515ea4eaec3493943c4eef796b41e.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/ea159a51ec41b349595b83e7b76e9736.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eeb18c719cadabcc5ec397a53be529db/ea159a51ec41b349595b83e7b76e9736.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eeb18c719cadabcc5ec397a53be529db/ea159a51ec41b349595b83e7b76e9736.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/3de1a9c60e55cae229c112cd3d7577ce.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/3de1a9c60e55cae229c112cd3d7577ce.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eecdcd023ee26cd563d3c7487058bc4d/3de1a9c60e55cae229c112cd3d7577ce.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/56030132cd20bbf82075392b8dca6405.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/56030132cd20bbf82075392b8dca6405.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eecdcd023ee26cd563d3c7487058bc4d/56030132cd20bbf82075392b8dca6405.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/71a7dccc5423f287a05169e663815868.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/71a7dccc5423f287a05169e663815868.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eecdcd023ee26cd563d3c7487058bc4d/71a7dccc5423f287a05169e663815868.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/c4fd81c95e1f149ead61e431261407a6.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eecdcd023ee26cd563d3c7487058bc4d/c4fd81c95e1f149ead61e431261407a6.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eecdcd023ee26cd563d3c7487058bc4d/c4fd81c95e1f149ead61e431261407a6.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/a533b295d50a4a49849f8cfdd3788de8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/a533b295d50a4a49849f8cfdd3788de8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed2d6496d7f07fce7eeea2201db4146/a533b295d50a4a49849f8cfdd3788de8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/c54c8b4f44dea39d20c36169852c761d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/c54c8b4f44dea39d20c36169852c761d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed2d6496d7f07fce7eeea2201db4146/c54c8b4f44dea39d20c36169852c761d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/da64a0ecdac9d7c2b6236e2a218b4f5d.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/da64a0ecdac9d7c2b6236e2a218b4f5d.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed2d6496d7f07fce7eeea2201db4146/da64a0ecdac9d7c2b6236e2a218b4f5d.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/f4b2a1da6e667c289abb80bcad88efad.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed2d6496d7f07fce7eeea2201db4146/f4b2a1da6e667c289abb80bcad88efad.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed2d6496d7f07fce7eeea2201db4146/f4b2a1da6e667c289abb80bcad88efad.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/090c283cbea305c905eddb6d2ec3f7c8.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/090c283cbea305c905eddb6d2ec3f7c8.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed72efe96f7e5dc43c7bc44ed3ecb46/090c283cbea305c905eddb6d2ec3f7c8.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/19abcdc84050baffacecc322cccfd2e7.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/19abcdc84050baffacecc322cccfd2e7.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed72efe96f7e5dc43c7bc44ed3ecb46/19abcdc84050baffacecc322cccfd2e7.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/1faa554ade69f279cfbb9fe36db8007f.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/1faa554ade69f279cfbb9fe36db8007f.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed72efe96f7e5dc43c7bc44ed3ecb46/1faa554ade69f279cfbb9fe36db8007f.dicom"
+fi
+mkdir -p "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46"
+if [ ! -f "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/d5f5cba986fabd58f8d6933e813e794b.dicom" ]; then
+  wget -N -c --user uid196719607 --password="$PASSWORD" -O "/mnt/ocean_storage/users/zzhao/VinDr-Mammo/images/eed72efe96f7e5dc43c7bc44ed3ecb46/d5f5cba986fabd58f8d6933e813e794b.dicom" "https://physionet.org/files/vindr-mammo/1.0.0/images/eed72efe96f7e5dc43c7bc44ed3ecb46/d5f5cba986fabd58f8d6933e813e794b.dicom"
+fi
+
+echo "Done! Downloaded 131 missing DICOMs to images/."

@@ -8,10 +8,10 @@ This is an experiment to have the LLM act as an autonomous researcher that can i
 
 To set up a new experiment, work with the user to:
 
-1. **Agree on a run tag**: propose a tag based on today's date (e.g. `mar30`). The branch `auto-isic/<tag>` must not already exist — this is a fresh run.
+1. **Agree on a run tag**: propose a tag based on today's date (e.g. `mar30`). The branch `auto-medai/<tag>` must not already exist — this is a fresh run.
 
 2. **Create the branch**:  
-   `git checkout -b auto-isic/<tag>` from auto-isic.
+   `git checkout -b auto-medai/<tag>` from auto-medai.
 
 3. **Read the in-scope files**:  
    The repo is small. Read these files for full context:
@@ -34,6 +34,8 @@ To set up a new experiment, work with the user to:
 - If dataset already provides train/val/test splits, use them as-is.
 - If only train/test splits are provided:
   - create validation set using **20% of training data**
+- If no official splitting provided:
+  -
 - When creating validation split:
   - prefer patient-level splitting
   - otherwise use sample-level splitting
@@ -211,7 +213,7 @@ d4e5f6g	nan	   nan     0.0	crash	OOM
 ---
 
 ## The experiment loop
-The experiment runs on a dedicated branch (e.g. `auto-isic/mar5` or `auto-isic/mar5-gpu0`).
+The experiment runs on a dedicated branch (e.g. `auto-medai/mar5` or `auto-medai/mar5-gpu0`).
 
 LOOP FOREVER:
 1. Look at the git state: the current branch/commit we're on

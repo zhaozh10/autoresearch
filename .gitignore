@@ -10,6 +10,7 @@ wheels/
 *.pth
 *.ckpt
 *.log
+*png
 # Virtual environments
 .venv
 worktrees/
